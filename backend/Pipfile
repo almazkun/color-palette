@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-ninja = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 ruff = "*"
