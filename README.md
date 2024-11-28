@@ -14,7 +14,7 @@ Create .env file in the root directory and add the following variables:
 ```
 echo "DJANGO_SECRET_KEY=your_secret_key" >> .env
 echo "DJANGO_DEBUG=True" >> .env
-echo "DJANGO_LOG_LEVEL=DEBUG=DEBUG" >> .env
+echo "DJANGO_LOG_LEVEL=DEBUG" >> .env
 echo "DJANGO_ALLOWED_HOSTS=localhost" >> .env
 echo "DJANGO_CSRF_TRUSTED_ORIGINS=http://localhost:8000" >> .env
 echo "DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:3000" >> .env
