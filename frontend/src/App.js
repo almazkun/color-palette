@@ -5,7 +5,8 @@ const baseApiUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 const COLOR_SPACES = {
   RGB: "rgb",
-  HSL: "hsl"
+  HSL: "hsl",
+  HEX: "hex"
 };
 
 const formatColor = (color) => {
@@ -14,6 +15,8 @@ const formatColor = (color) => {
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
     case COLOR_SPACES.HSL:
       return `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
+    case COLOR_SPACES.HEX:
+      return `${color.hex}`;
     default:
       return "";
   }

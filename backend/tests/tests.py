@@ -26,3 +26,6 @@ class TestSwatchesAPI(TestCase):
                 self.assertIn(swatch["s"], range(101))
                 self.assertIn("l", swatch)
                 self.assertIn(swatch["l"], range(101))
+            elif swatch["color_space"] == "hex":
+                self.assertIn("hex", swatch)
+                self.assertRegex(swatch["hex"], r"^#[0-9a-f]{6}$")

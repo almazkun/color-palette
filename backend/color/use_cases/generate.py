@@ -26,8 +26,16 @@ def generate_hsl():
     }
 
 
+def generate_hex():
+    return {
+        "color_space": "hex",
+        "hex": "#%06x" % randint(0, 0xFFFFFF),
+    }
+
+
 register_color_space("rgb", generate_rgb)
 register_color_space("hsl", generate_hsl)
+register_color_space("hex", generate_hex)
 
 
 def swatches(count: int):

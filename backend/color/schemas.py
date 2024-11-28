@@ -7,6 +7,7 @@ from ninja import Field, Schema
 class ColorSpace(str, Enum):
     RGB = "rgb"
     HSL = "hsl"
+    HEX = "hex"
 
 
 class BaseColor(Schema):
@@ -25,5 +26,9 @@ class HSLColor(BaseColor):
     l: int = Field(..., ge=0, le=100, description="Lightness value (0-100)")
 
 
+class HEXColor(BaseColor):
+    hex: str = Field(..., description="Hex value")
+
+
 class SwatchOutput(Schema):
-    swatches: List[Union[RGBColor, HSLColor]]
+    swatches: List[Union[RGBColor, HSLColor, HEXColor]]
