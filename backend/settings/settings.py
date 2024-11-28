@@ -32,7 +32,7 @@ ALLOWED_HOSTS = (
     else []
 )
 
-CORS_ALLOWED_ORIGINS = (
+CSRF_TRUSTED_ORIGINS = (
     os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS").split(",")
     if os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS")
     else []
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "color",
     # Third-party apps
-    "corsheaders"
+    "corsheaders",
 ]
 
 MIDDLEWARE = [

@@ -25,9 +25,5 @@ class HSLColor(BaseColor):
     l: int = Field(..., ge=0, le=100, description="Lightness value (0-100)")
 
 
-class SwatchRequest(BaseColor):
-    pass
-
-
 class SwatchOutput(Schema):
     swatches: List[Union[RGBColor, HSLColor]]

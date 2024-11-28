@@ -16,12 +16,12 @@ lint:
 
 cov:
 	$(EXECUTOR) $(COMMAND) pip install coverage
-	$(EXECUTOR) $(COMMAND) coverage run ./manage.py test 
+	$(EXECUTOR) $(COMMAND) coverage run ./manage.py test ./tests
 	$(EXECUTOR) $(COMMAND) coverage html
 	$(EXECUTOR) $(COMMAND) coverage report -m
 
 test:
-	$(EXECUTOR) $(COMMAND) ./manage.py test -k=$(k)
+	$(EXECUTOR) $(COMMAND) ./manage.py test ./tests -k=$(k)
 
 run:
 	$(EXECUTOR) $(COMMAND) ./manage.py runserver
@@ -43,3 +43,9 @@ startdemo:
 
 shell:
 	$(EXECUTOR) $(COMMAND) ./manage.py shell
+
+build:
+	docker build -t $(REGISTRY)/$(APP_NAME) .
+
+prod:
+	docker run -it -p 8000:8000 --rm -d --name $(CONTAINER_NAME) --env-file ./.env $(REGISTRY)/$(APP_NAME)

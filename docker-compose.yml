@@ -1,0 +1,33 @@
+x-default-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "10"
+    tag: "{{.Name}}"
+
+services:
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    logging: *logging
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: "${DJANGO_SECRET_KEY}"
+      DJANGO_DEBUG: "${DJANGO_DEBUG}"
+      DJANGO_LOG_LEVEL: "${DJANGO_LOG_LEVEL}"
+      DJANGO_ALLOWED_HOSTS: "${DJANGO_ALLOWED_HOSTS}"
+      DJANGO_CSRF_TRUSTED_ORIGINS: "${DJANGO_CSRF_TRUSTED_ORIGINS}"
+      DJANGO_CORS_ALLOWED_ORIGINS: "http://localhost:3000"
+    logging: *logging
